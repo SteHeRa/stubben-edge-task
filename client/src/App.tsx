@@ -1,17 +1,23 @@
-import React from "react";
-import { Grid, Typography } from "@mui/material";
+import React from "react"
+import { QueryClientProvider, QueryClient } from "react-query"
+import { Grid } from "@mui/material"
+import Question from "./components/Question"
 
 const App = () => {
-  return (
-    <Grid
-      container
-      className="app-container"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Typography variant="h1">Hello World!</Typography>
-    </Grid>
-  );
-};
+  const queryClient = new QueryClient()
 
-export default App;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Grid
+        container
+        className="app-container"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Question />
+      </Grid>
+    </QueryClientProvider>
+  )
+}
+
+export default App
